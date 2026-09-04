@@ -1,184 +1,553 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Şehitlerimiz veri birleştirici
-
-Kaynaklar:
-1) sehitlerimiz.org.tr CSV (ana tarihsel veri seti)
-2) EGM genel Şehitlerimiz sayfası
-3) EGM Özel Harekât Şehitlerimiz
-4) Jandarma Şehit Sorgulama
-5) Sahil Güvenlik Şehitlerimiz
-
-Amaç:
-- Kaynakları ortak şemaya çevirmek
-- Aynı kişiyi mümkün olduğunca güvenli biçimde tek kayda indirmek
-- Kaynakların tamamını 'kaynaklar' alanında korumak
-- Bir kaynaktan gelen boş alanı başka kaynakta doluysa tamamlamak
-- Takvim için tam tarih bulunan kayıtları ayrıca üretmek
-
-Not:
-MSB'nin tarihsel Şehit Bilgi Kapısı verileri sehitlerimiz.org.tr'nin
-ana CSV'sinde zaten yer aldığı için ayrıca HTML kazıma yerine bu veri seti
-temel alınır. Bu yaklaşım, MSB'nin il/sayfa tabanlı arşivini eksik çekme
-riskini azaltır.
-"""
 
 import csv
 import io
 import re
+import sys
 import hashlib
 import unicodedata
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
 
-BASE_CSV_URL = "https://sehitlerimiz.org.tr/veri/sehitler.csv"
-EGM_URL = "https://www.egm.gov.tr/sehitlerimiz"
-EGM_OH_URL = "https://www.egm.gov.tr/ozelharekat/sehitlerimiz"
-JANDARMA_URL = "https://vatandas.jandarma.gov.tr/sehit/sehitsorgu/"
-SAHIL_URL = "https://www.sg.gov.tr/sehitlerimiz"
+BASE_URL = "https://sehitlerimiz.org.tr/veri/sehitler.csv"
 
-OUT_DIR = Path("data")
-OUT_DIR.mkdir(exist_ok=True)
+SOURCES = {
+    "EGM": "https://www.egm.gov.tr/sehitlerimiz",
+    "EGM_OZEL_HAREKAT": "https://www.egm.gov.tr/ozelharekat/sehitlerimiz",
+    "EGM_HAVACILIK": "https://www.egm.gov.tr/havacilik/sehitlerimiz",
+    "JANDARMA": "https://vatandas.jandarma.gov.tr/sehit/sehitsorgu/",
+    "SAHIL_GUVENLIK": "https://www.sg.gov.tr/sehitlerimiz",
+}
 
-HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; Sehitlerimiz/1.0)"}
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                  "AppleWebKit/537.36 Chrome/140 Safari/537.36",
+    "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
+}
 
-def clean(s):
-    return re.sub(r"\s+", " ", str(s or "").strip())
+OUT = Path("data")
+OUT.mkdir(exist_ok=True)
 
-def norm(s):
-    s = clean(s).casefold()
-    s = unicodedata.normalize("NFKD", s)
-    s = "".join(c for c in s if not unicodedata.combining(c))
-    s = s.translate(str.maketrans({"ı":"i","İ":"i","ş":"s","Ş":"s","ğ":"g","Ğ":"g","ü":"u","Ü":"u","ö":"o","Ö":"o","ç":"c","Ç":"c"}))
-    return re.sub(r"[^a-z0-9]+", " ", s).strip()
+FIELDS = [
+    "id",
+    "ad_soyad",
+    "baba_adi",
+    "rutbe",
+    "kurum",
+    "memleket",
+    "dogum_yeri",
+    "dogum_yili",
+    "sehadet_tarihi",
+    "donem_cephe",
+    "kaynaklar",
+]
 
-def parse_date(s):
-    s = clean(s)
-    if not s:
+
+def clean(x):
+    return re.sub(r"\s+", " ", str(x or "")).strip()
+
+
+def normalize(x):
+    x = clean(x).casefold()
+
+    x = unicodedata.normalize("NFKD", x)
+    x = "".join(
+        c for c in x
+        if not unicodedata.combining(c)
+    )
+
+    table = str.maketrans({
+        "ı": "i",
+        "ş": "s",
+        "ğ": "g",
+        "ü": "u",
+        "ö": "o",
+        "ç": "c",
+    })
+
+    x = x.translate(table)
+
+    return re.sub(r"[^a-z0-9]+", " ", x).strip()
+
+
+def parse_date(value):
+    value = clean(value)
+
+    if not value:
         return ""
-    for fmt in ("%d.%m.%Y", "%d/%m/%Y", "%Y-%m-%d", "%Y/%m/%d", "%d.%m.%y"):
+
+    formats = [
+        "%d.%m.%Y",
+        "%d/%m/%Y",
+        "%Y-%m-%d",
+        "%Y/%m/%d",
+        "%d-%m-%Y",
+    ]
+
+    for fmt in formats:
         try:
-            return datetime.strptime(s, fmt).strftime("%Y-%m-%d")
+            return datetime.strptime(value, fmt).strftime("%Y-%m-%d")
         except ValueError:
             pass
-    m = re.search(r"(\d{1,2})[./-](\d{1,2})[./-](\d{4})", s)
+
+    m = re.search(
+        r"(\d{1,2})[./-](\d{1,2})[./-](\d{4})",
+        value
+    )
+
     if m:
         try:
-            return datetime(int(m.group(3)), int(m.group(2)), int(m.group(1))).strftime("%Y-%m-%d")
+            return datetime(
+                int(m.group(3)),
+                int(m.group(2)),
+                int(m.group(1))
+            ).strftime("%Y-%m-%d")
         except ValueError:
             pass
+
     return ""
 
-def fetch(url):
-    r = requests.get(url, headers=HEADERS, timeout=60)
-    r.raise_for_status()
-    return r.text
 
-def add_record(records, rec):
-    rec = {k: clean(v) for k, v in rec.items()}
-    if not rec["ad_soyad"]:
-        return
-    records.append(rec)
+def request(url):
+    response = requests.get(
+        url,
+        headers=HEADERS,
+        timeout=90
+    )
 
-def load_base():
-    text = requests.get(BASE_CSV_URL, headers=HEADERS, timeout=120).content.decode("utf-8-sig", errors="replace")
-    reader = csv.DictReader(io.StringIO(text))
-    records = []
+    response.raise_for_status()
+
+    return response
+
+
+def base_source():
+    print("BASE:", BASE_URL)
+
+    response = request(BASE_URL)
+
+    text = response.content.decode(
+        "utf-8-sig",
+        errors="replace"
+    )
+
+    reader = csv.DictReader(
+        io.StringIO(text)
+    )
+
+    rows = []
+
     for row in reader:
-        ad = clean(row.get("ad"))
-        # Kaynaktaki veri zaten ad + baba adı biçiminde olduğundan
-        # ad_soyad alanında yalnızca ad tutulur; soyad alanı ayrı kaynaklarda
-        # bulunuyorsa normalize aşamasında birleşir.
-        add_record(records, {
-            "ad_soyad": ad,
-            "baba_adi": row.get("baba_adi",""),
-            "rutbe": row.get("rutbe",""),
-            "kurum": "MSB / tarihsel arşiv",
-            "memleket": row.get("memleket",""),
-            "dogum_yeri": row.get("dogum_yeri",""),
-            "dogum_yili": row.get("dogum_yili",""),
-            "sehadet_tarihi": parse_date(row.get("sehadet_tarihi","")),
-            "donem_cephe": row.get("donem_cephe",""),
-            "kaynak": "sehitlerimiz.org.tr",
-            "kaynak_sayfa": row.get("sayfa",""),
-            "kaynaklar": "sehitlerimiz.org.tr",
-        })
-    return records
 
-def parse_egm(url, kurum):
-    soup = BeautifulSoup(fetch(url), "html.parser")
-    records = []
-    # EGM sayfalarında tarih + 'Şehit ...' metinlerini yakala.
-    text = soup.get_text("\n", strip=True)
-    for line in text.splitlines():
-        m = re.search(r"(\d{2}\.\d{2}\.\d{4})\s+Şehit\s+(.+)", line)
-        if not m:
+        name = clean(row.get("ad"))
+
+        if not name:
             continue
-        d = parse_date(m.group(1))
-        rest = clean(m.group(2))
-        rest = re.sub(r"\s*Şehit\s+.*$", "", rest)
-        add_record(records, {
-            "ad_soyad": re.sub(r"^.*?(?:Memuru|Başpolis Memuru|Komiser Yardımcısı|Komiser|Başkomiser|Emniyet Amiri)\s+", "", rest).strip() or rest,
+
+        rows.append({
+            "ad_soyad": name,
+            "baba_adi": clean(row.get("baba_adi")),
+            "rutbe": clean(row.get("rutbe")),
+            "kurum": "sehitlerimiz.org.tr",
+            "memleket": clean(row.get("memleket")),
+            "dogum_yeri": clean(row.get("dogum_yeri")),
+            "dogum_yili": clean(row.get("dogum_yili")),
+            "sehadet_tarihi": parse_date(
+                row.get("sehadet_tarihi")
+            ),
+            "donem_cephe": clean(
+                row.get("donem_cephe")
+            ),
+            "kaynaklar":
+                "sehitlerimiz.org.tr",
+        })
+
+    print("BASE KAYIT:", len(rows))
+
+    if len(rows) < 100000:
+        raise RuntimeError(
+            "Ana kaynak beklenenden az kayıt döndürdü!"
+        )
+
+    return rows
+
+
+def extract_date_name_pairs(text):
+    """
+    Genel sayfalarda:
+
+        14.06.2026
+        Tayfun BAŞ
+        Polis Memuru
+
+    veya:
+
+        Tayfun BAŞ
+        14 Haziran 2026
+
+    gibi yapılardan tarih + isim çıkarmaya çalışır.
+    """
+
+    lines = [
+        clean(x)
+        for x in text.splitlines()
+        if clean(x)
+    ]
+
+    results = []
+
+    months = (
+        "ocak|şubat|mart|nisan|mayıs|haziran|"
+        "temmuz|ağustos|eylül|ekim|kasım|aralık"
+    )
+
+    month_re = re.compile(
+        rf"(\d{{1,2}})\s+({months})\s+(\d{{4}})",
+        re.I
+    )
+
+    numeric_re = re.compile(
+        r"\b(\d{1,2}[./]\d{1,2}[./]\d{4})\b"
+    )
+
+    for i, line in enumerate(lines):
+
+        date_value = parse_date(line)
+
+        if not date_value:
+
+            m = month_re.search(line)
+
+            if m:
+                month_names = {
+                    "ocak": 1,
+                    "şubat": 2,
+                    "mart": 3,
+                    "nisan": 4,
+                    "mayıs": 5,
+                    "haziran": 6,
+                    "temmuz": 7,
+                    "ağustos": 8,
+                    "eylül": 9,
+                    "ekim": 10,
+                    "kasım": 11,
+                    "aralık": 12,
+                }
+
+                try:
+                    d = int(m.group(1))
+                    mo = month_names[m.group(2).casefold()]
+                    y = int(m.group(3))
+
+                    date_value = datetime(
+                        y, mo, d
+                    ).strftime("%Y-%m-%d")
+
+                except Exception:
+                    date_value = ""
+
+        if not date_value:
+            continue
+
+        candidates = []
+
+        for offset in range(1, 5):
+
+            if i - offset >= 0:
+                candidates.append(
+                    lines[i - offset]
+                )
+
+            if i + offset < len(lines):
+                candidates.append(
+                    lines[i + offset]
+                )
+
+        for candidate in candidates:
+
+            candidate = clean(candidate)
+
+            if len(candidate) < 4:
+                continue
+
+            if parse_date(candidate):
+                continue
+
+            if re.search(
+                r"(şehit|tarih|sayfa|liste|arama|"
+                r"komutanlığı|başkanlığı)",
+                candidate,
+                re.I
+            ):
+                continue
+
+            # URL / menü / teknik metinleri ele.
+            if "http" in candidate.lower():
+                continue
+
+            # İsimlerde rakam bulunmasın.
+            if re.search(r"\d", candidate):
+                continue
+
+            results.append(
+                (
+                    candidate,
+                    date_value
+                )
+            )
+
+            break
+
+    return results
+
+
+def scrape_general(url, institution):
+    print("TARANIYOR:", institution)
+
+    response = request(url)
+
+    soup = BeautifulSoup(
+        response.text,
+        "html.parser"
+    )
+
+    # Önce bağlantılı bireysel şehit sayfalarını topla.
+    links = []
+
+    for a in soup.find_all("a", href=True):
+
+        href = a.get("href", "")
+        text = clean(a.get_text(" ", strip=True))
+
+        if not text:
+            continue
+
+        if (
+            "sehit" in href.lower()
+            or "şehit" in href.lower()
+            or "sehit" in text.lower()
+            or "şehit" in text.lower()
+        ):
+            links.append(
+                (
+                    text,
+                    href
+                )
+            )
+
+    # Aynı linkleri temizle.
+    unique_links = []
+    seen = set()
+
+    for text, href in links:
+
+        if href in seen:
+            continue
+
+        seen.add(href)
+
+        if href.startswith("/"):
+            href = "https://www.egm.gov.tr" + href
+
+        elif href.startswith("//"):
+            href = "https:" + href
+
+        elif not href.startswith("http"):
+            continue
+
+        unique_links.append(
+            (text, href)
+        )
+
+    records = []
+
+    # Sayfanın kendisinden de çıkar.
+    pairs = extract_date_name_pairs(
+        soup.get_text("\n")
+    )
+
+    for name, death in pairs:
+
+        records.append({
+            "ad_soyad": name,
             "baba_adi": "",
             "rutbe": "",
-            "kurum": kurum,
+            "kurum": institution,
             "memleket": "",
             "dogum_yeri": "",
             "dogum_yili": "",
-            "sehadet_tarihi": d,
+            "sehadet_tarihi": death,
             "donem_cephe": "",
-            "kaynak": url,
-            "kaynak_sayfa": "",
             "kaynaklar": url,
         })
-    return records
 
-def parse_jandarma(url):
-    soup = BeautifulSoup(fetch(url), "html.parser")
+    # Bireysel sayfaları oku.
+    for index, (_, link) in enumerate(
+        unique_links[:2000],
+        1
+    ):
+
+        try:
+            r = request(link)
+
+            page = BeautifulSoup(
+                r.text,
+                "html.parser"
+            )
+
+            text = page.get_text("\n")
+
+            pairs = extract_date_name_pairs(text)
+
+            for name, death in pairs:
+
+                records.append({
+                    "ad_soyad": name,
+                    "baba_adi": "",
+                    "rutbe": "",
+                    "kurum": institution,
+                    "memleket": "",
+                    "dogum_yeri": "",
+                    "dogum_yili": "",
+                    "sehadet_tarihi": death,
+                    "donem_cephe": "",
+                    "kaynaklar": link,
+                })
+
+        except Exception as e:
+            print(
+                "UYARI:",
+                institution,
+                link,
+                e
+            )
+
+    # Aynı kurum içinde duplicate temizle.
+    cleaned = {}
+    for r in records:
+
+        if not r["ad_soyad"]:
+            continue
+
+        key = (
+            normalize(r["ad_soyad"]),
+            r["sehadet_tarihi"]
+        )
+
+        if key not in cleaned:
+            cleaned[key] = r
+
+    result = list(cleaned.values())
+
+    print(
+        institution,
+        "KAYIT:",
+        len(result)
+    )
+
+    return result
+
+
+def scrape_jandarma():
+    """
+    Jandarma sayfasının HTML yapısı değişebildiği için
+    mevcut sayfadan alınabilen kayıtları toplar.
+    """
+
+    print("TARANIYOR: JANDARMA")
+
+    response = request(
+        SOURCES["JANDARMA"]
+    )
+
+    soup = BeautifulSoup(
+        response.text,
+        "html.parser"
+    )
+
     records = []
-    rows = soup.find_all("tr")
-    for tr in rows:
-        cells = [clean(x.get_text(" ", strip=True)) for x in tr.find_all(["td","th"])]
-        if len(cells) < 4:
+
+    # Tablolar
+    for tr in soup.find_all("tr"):
+
+        cells = [
+            clean(td.get_text(" ", strip=True))
+            for td in tr.find_all(
+                ["td", "th"]
+            )
+        ]
+
+        if len(cells) < 2:
             continue
-        d = parse_date(cells[1])
-        if not d:
+
+        date_value = ""
+
+        for cell in cells:
+            date_value = parse_date(cell)
+
+            if date_value:
+                break
+
+        if not date_value:
             continue
-        rank, first, last = cells[2], cells[3], cells[4] if len(cells) > 4 else ""
-        add_record(records, {
-            "ad_soyad": f"{first} {last}".strip(),
+
+        # Tarih dışındaki en anlamlı metni isim olarak al.
+        candidates = [
+            c for c in cells
+            if c != date_value
+            and len(c) > 2
+        ]
+
+        if not candidates:
+            continue
+
+        name = candidates[-1]
+
+        records.append({
+            "ad_soyad": name,
             "baba_adi": "",
-            "rutbe": rank,
+            "rutbe": "",
             "kurum": "Jandarma Genel Komutanlığı",
             "memleket": "",
             "dogum_yeri": "",
             "dogum_yili": "",
-            "sehadet_tarihi": d,
+            "sehadet_tarihi": date_value,
             "donem_cephe": "",
-            "kaynak": url,
-            "kaynak_sayfa": "",
-            "kaynaklar": url,
+            "kaynaklar": SOURCES["JANDARMA"],
         })
+
+    print(
+        "JANDARMA KAYIT:",
+        len(records)
+    )
+
     return records
 
-def parse_sahil(url):
-    soup = BeautifulSoup(fetch(url), "html.parser")
+
+def scrape_sahil():
+    print("TARANIYOR: SAHİL GÜVENLİK")
+
+    response = request(
+        SOURCES["SAHIL_GUVENLIK"]
+    )
+
+    soup = BeautifulSoup(
+        response.text,
+        "html.parser"
+    )
+
+    text = soup.get_text("\n")
+
+    pairs = extract_date_name_pairs(text)
+
     records = []
-    text = soup.get_text("\n", strip=True)
-    lines = [clean(x) for x in text.splitlines() if clean(x)]
-    for i, line in enumerate(lines):
-        m = re.fullmatch(r"(\d{1,2})\s+(\w+)\s+(\d{4})", line)
-        if not m:
-            continue
-        d = parse_date(line)
-        if i == 0:
-            continue
-        name = lines[i-1]
-        add_record(records, {
+
+    for name, death in pairs:
+
+        records.append({
             "ad_soyad": name,
             "baba_adi": "",
             "rutbe": "",
@@ -186,81 +555,263 @@ def parse_sahil(url):
             "memleket": "",
             "dogum_yeri": "",
             "dogum_yili": "",
-            "sehadet_tarihi": d,
+            "sehadet_tarihi": death,
             "donem_cephe": "",
-            "kaynak": url,
-            "kaynak_sayfa": "",
-            "kaynaklar": url,
+            "kaynaklar":
+                SOURCES["SAHIL_GUVENLIK"],
         })
+
+    # Sahil Güvenlik sayfasında isim + tarih blokları
+    # olduğu için ikinci güvenlik taraması:
+    lines = [
+        clean(x)
+        for x in text.splitlines()
+        if clean(x)
+    ]
+
+    for i, line in enumerate(lines):
+
+        d = parse_date(line)
+
+        if not d:
+            continue
+
+        if i == 0:
+            continue
+
+        # Önceki 3 satırda isim ara.
+        for off in range(1, 4):
+
+            if i - off < 0:
+                continue
+
+            name = lines[i-off]
+
+            if (
+                len(name) >= 4
+                and not re.search(r"\d", name)
+                and not parse_date(name)
+            ):
+                records.append({
+                    "ad_soyad": name,
+                    "baba_adi": "",
+                    "rutbe": "",
+                    "kurum": "Sahil Güvenlik Komutanlığı",
+                    "memleket": "",
+                    "dogum_yeri": "",
+                    "dogum_yili": "",
+                    "sehadet_tarihi": d,
+                    "donem_cephe": "",
+                    "kaynaklar":
+                        SOURCES["SAHIL_GUVENLIK"],
+                })
+                break
+
+    print(
+        "SAHİL GÜVENLİK KAYIT:",
+        len(records)
+    )
+
     return records
 
-def key_for(r):
-    name = norm(r["ad_soyad"])
-    date = r["sehadet_tarihi"]
-    # Tarih + isim en güvenli kısa anahtar.
-    if date:
-        return ("date", name, date)
-    # Tarih yoksa baba adı/memleket ile daha sıkı anahtar.
-    return ("nodate", name, norm(r["baba_adi"]), norm(r["memleket"]))
 
-def merge(records):
-    merged = {}
-    for r in records:
-        k = key_for(r)
-        if k not in merged:
-            merged[k] = dict(r)
+def merge(all_records):
+    """
+    Amaç:
+    - Tarih + isim eşleşmesini güçlü kabul etmek.
+    - Tarih yoksa sadece isimle birleştirmemek.
+    - Bir kaynağın boş alanını diğer kaynak doldurabiliyorsa doldurmak.
+    """
+
+    result = {}
+
+    for r in all_records:
+
+        name = normalize(
+            r["ad_soyad"]
+        )
+
+        death = r["sehadet_tarihi"]
+
+        if not name:
             continue
-        old = merged[k]
-        for field in old:
-            if field == "kaynaklar":
-                continue
-            if not old[field] and r[field]:
-                old[field] = r[field]
-        srcs = set(filter(None, [x.strip() for x in (old["kaynaklar"] + ";" + r["kaynaklar"]).split(";")]))
-        old["kaynaklar"] = ";".join(sorted(srcs))
-    return list(merged.values())
 
-def write_csv(rows, path):
-    fields = ["id","ad_soyad","baba_adi","rutbe","kurum","memleket","dogum_yeri","dogum_yili","sehadet_tarihi","donem_cephe","kaynak","kaynak_sayfa","kaynaklar"]
-    with path.open("w", encoding="utf-8-sig", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=fields)
-        w.writeheader()
-        for i, r in enumerate(rows, 1):
-            r = dict(r)
-            r["id"] = hashlib.sha256((key_for(r).__repr__()).encode("utf-8")).hexdigest()[:16]
-            w.writerow({k:r.get(k,"") for k in fields})
+        if death:
+            key = (
+                name,
+                death
+            )
+        else:
+            key = (
+                name,
+                normalize(r["baba_adi"]),
+                normalize(r["memleket"]),
+                normalize(r["kurum"])
+            )
+
+        if key not in result:
+
+            result[key] = dict(r)
+
+            continue
+
+        old = result[key]
+
+        for field in [
+            "baba_adi",
+            "rutbe",
+            "kurum",
+            "memleket",
+            "dogum_yeri",
+            "dogum_yili",
+            "sehadet_tarihi",
+            "donem_cephe",
+        ]:
+
+            if (
+                not old.get(field)
+                and r.get(field)
+            ):
+                old[field] = r[field]
+
+        sources = set(
+            filter(
+                None,
+                (
+                    old["kaynaklar"] +
+                    ";" +
+                    r["kaynaklar"]
+                ).split(";")
+            )
+        )
+
+        old["kaynaklar"] = ";".join(
+            sorted(sources)
+        )
+
+    return list(result.values())
+
+
+def write_csv(rows, filename):
+    path = OUT / filename
+
+    with path.open(
+        "w",
+        encoding="utf-8-sig",
+        newline=""
+    ) as f:
+
+        writer = csv.DictWriter(
+            f,
+            fieldnames=FIELDS
+        )
+
+        writer.writeheader()
+
+        for row in rows:
+
+            source_key = "|".join([
+                normalize(row["ad_soyad"]),
+                row["sehadet_tarihi"],
+                normalize(row["baba_adi"]),
+                normalize(row["memleket"]),
+            ])
+
+            row_id = hashlib.sha256(
+                source_key.encode("utf-8")
+            ).hexdigest()[:20]
+
+            output = dict(row)
+            output["id"] = row_id
+
+            writer.writerow({
+                field:
+                    output.get(field, "")
+                for field in FIELDS
+            })
+
+    return path
+
 
 def main():
+
     all_records = []
-    base = load_base()
-    print("sehitlerimiz.org.tr:", len(base))
+
+    base = base_source()
     all_records.extend(base)
 
-    for label, fn in [
-        ("EGM", lambda: parse_egm(EGM_URL, "Emniyet Genel Müdürlüğü")),
-        ("EGM Özel Harekât", lambda: parse_egm(EGM_OH_URL, "EGM Özel Harekât")),
-        ("Jandarma", lambda: parse_jandarma(JANDARMA_URL)),
-        ("Sahil Güvenlik", lambda: parse_sahil(SAHIL_URL)),
-    ]:
-        try:
-            rows = fn()
-            print(label + ":", len(rows))
-            all_records.extend(rows)
-        except Exception as e:
-            print(label + " HATA:", e)
+    # EGM genel
+    all_records.extend(
+        scrape_general(
+            SOURCES["EGM"],
+            "Emniyet Genel Müdürlüğü"
+        )
+    )
 
-    merged = merge(all_records)
-    merged.sort(key=lambda r: (r["sehadet_tarihi"] == "", r["sehadet_tarihi"], norm(r["ad_soyad"])))
+    # EGM Özel Harekât
+    all_records.extend(
+        scrape_general(
+            SOURCES["EGM_OZEL_HAREKAT"],
+            "EGM Özel Harekât"
+        )
+    )
 
-    write_csv(merged, OUT_DIR / "sehitlerimiz_birlesik.csv")
+    # EGM Havacılık
+    all_records.extend(
+        scrape_general(
+            SOURCES["EGM_HAVACILIK"],
+            "EGM Havacılık"
+        )
+    )
 
-    # Takvim için tam tarihi olan kayıtları ayrıca yaz.
-    dated = [r for r in merged if r["sehadet_tarihi"]]
-    write_csv(dated, OUT_DIR / "sehitlerimiz_takvim.csv")
+    # Jandarma
+    all_records.extend(
+        scrape_jandarma()
+    )
 
+    # Sahil Güvenlik
+    all_records.extend(
+        scrape_sahil()
+    )
+
+    merged = merge(
+        all_records
+    )
+
+    merged.sort(
+        key=lambda x: (
+            x["sehadet_tarihi"] == "",
+            x["sehadet_tarihi"],
+            normalize(x["ad_soyad"])
+        )
+    )
+
+    dated = [
+        r for r in merged
+        if r["sehadet_tarihi"]
+    ]
+
+    all_path = write_csv(
+        merged,
+        "sehitlerimiz_birlesik.csv"
+    )
+
+    calendar_path = write_csv(
+        dated,
+        "sehitlerimiz_takvim.csv"
+    )
+
+    print()
+    print("===================================")
+    print("SONUÇ")
+    print("===================================")
     print("Ham toplam:", len(all_records))
-    print("Birleştirilmiş benzersiz:", len(merged))
+    print("Birleşik benzersiz:", len(merged))
     print("Tam tarihli:", len(dated))
+    print("Tüm veri:", all_path)
+    print("Takvim verisi:", calendar_path)
+    print("===================================")
+
 
 if __name__ == "__main__":
     main()
