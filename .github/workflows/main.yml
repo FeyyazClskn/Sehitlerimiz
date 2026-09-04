@@ -10,7 +10,9 @@ permissions:
   contents: write
 
 jobs:
+
   update:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -26,23 +28,28 @@ jobs:
       - name: Bagimliliklari kur
         run: |
           python -m pip install --upgrade pip
-          pip install requests beautifulsoup4
+          pip install requests
 
-      - name: Tum kaynaklari cek
+      - name: Sehit verilerini indir
         run: |
           python merge_sources.py
 
-      - name: iPhone ICS olustur
+      - name: ICS takvim olustur
         run: |
+
           python - <<'PY'
+
           import csv
           import uuid
           from datetime import datetime, timedelta
 
+
           INPUT = "data/sehitlerimiz_takvim.csv"
           OUTPUT = "turkiye_sehitleri.ics"
 
-          def esc(value):
+
+          def escape(value):
+
               return (
                   str(value or "")
                   .replace("\\", "\\\\")
@@ -52,7 +59,9 @@ jobs:
                   .replace("\n", "\\n")
               )
 
+
           events = []
+
 
           with open(
               INPUT,
@@ -64,21 +73,29 @@ jobs:
 
               for row in reader:
 
-                  date_value = row.get(
-                      "sehadet_tarihi",
-                      ""
-                  ).strip()
+                  date_value = (
+                      row.get(
+                          "sehadet_tarihi",
+                          ""
+                      )
+                      .strip()
+                  )
 
                   if not date_value:
                       continue
 
+
                   try:
-                      d = datetime.strptime(
+
+                      date = datetime.strptime(
                           date_value,
                           "%Y-%m-%d"
                       ).date()
+
                   except ValueError:
+
                       continue
+
 
                   name = (
                       row.get(
@@ -88,6 +105,7 @@ jobs:
                       or "İsmi belirtilmemiş"
                   )
 
+
                   rank = (
                       row.get(
                           "rutbe",
@@ -95,29 +113,48 @@ jobs:
                       ).strip()
                   )
 
+
                   if rank:
+
                       title = (
                           f"Şehit {rank} {name}"
                       )
+
                   else:
+
                       title = (
                           f"Şehit {name}"
                       )
 
-                  description = [
-                      f"Şehadet tarihi: {d.strftime('%d.%m.%Y')}",
-                      f"Şehadet yılı: {d.year}",
-                  ]
+
+                  description = []
+
+                  description.append(
+                      "Türkiye Şehitleri"
+                  )
+
+                  description.append(
+                      f"Şehadet tarihi: "
+                      f"{date.strftime('%d.%m.%Y')}"
+                  )
+
 
                   fields = [
-                      ("Kurum", "kurum"),
+
                       ("Baba adı", "baba_adi"),
+
                       ("Memleket", "memleket"),
+
                       ("Doğum yeri", "dogum_yeri"),
+
                       ("Doğum yılı", "dogum_yili"),
-                      ("Dönem/Cephe", "donem_cephe"),
-                      ("Kaynaklar", "kaynaklar"),
+
+                      ("Dönem / Cephe", "donem_cephe"),
+
+                      ("Kaynak", "kaynak"),
+
                   ]
+
 
                   for label, field in fields:
 
@@ -129,35 +166,52 @@ jobs:
                       )
 
                       if value:
+
                           description.append(
                               f"{label}: {value}"
                           )
 
-                  uid_source = (
-                      row.get("id", "")
-                      + "|"
-                      + name
-                      + "|"
-                      + date_value
+
+                  source_page = (
+                      row.get(
+                          "sayfa",
+                          ""
+                      ).strip()
                   )
+
 
                   uid = (
                       str(
                           uuid.uuid5(
                               uuid.NAMESPACE_URL,
-                              uid_source
+                              (
+                                  row.get(
+                                      "id",
+                                      ""
+                                  )
+                                  + "|"
+                                  + name
+                                  + "|"
+                                  + date_value
+                              )
                           )
                       )
                       + "@sehitlerimiz"
                   )
 
-                  end = d + timedelta(
-                      days=1
+
+                  end_date = (
+                      date
+                      + timedelta(days=1)
                   )
 
+
                   events.extend([
+
                       "BEGIN:VEVENT",
+
                       f"UID:{uid}",
+
                       (
                           "DTSTAMP:"
                           + datetime.utcnow()
@@ -165,45 +219,98 @@ jobs:
                               "%Y%m%dT%H%M%SZ"
                           )
                       ),
+
                       (
                           "DTSTART;VALUE=DATE:"
-                          + d.strftime("%Y%m%d")
+                          + date.strftime(
+                              "%Y%m%d"
+                          )
                       ),
+
                       (
                           "DTEND;VALUE=DATE:"
-                          + end.strftime("%Y%m%d")
+                          + end_date.strftime(
+                              "%Y%m%d"
+                          )
                       ),
-                      f"SUMMARY:{esc(title)}",
+
+                      (
+                          "SUMMARY:"
+                          + escape(title)
+                      ),
+
                       (
                           "DESCRIPTION:"
-                          + esc(
+                          + escape(
                               "\n".join(
                                   description
                               )
                           )
                       ),
+
                       "CATEGORIES:Türkiye Şehitleri",
+
                       "RRULE:FREQ=YEARLY",
+
                       "STATUS:CONFIRMED",
+
                       "TRANSP:TRANSPARENT",
-                      "END:VEVENT",
+
                   ])
 
+
+                  if source_page:
+
+                      events.append(
+                          "URL:"
+                          + source_page
+                      )
+
+
+                  events.append(
+                      "END:VEVENT"
+                  )
+
+
           calendar = [
+
               "BEGIN:VCALENDAR",
+
               "VERSION:2.0",
-              "PRODID:-//feyyazclskn//Sehitlerimiz//TR",
+
+              (
+                  "PRODID:"
+                  "//feyyazclskn"
+                  "//Sehitlerimiz"
+                  "//TR"
+              ),
+
               "CALSCALE:GREGORIAN",
+
               "METHOD:PUBLISH",
-              "X-WR-CALNAME:Türkiye Şehitleri",
-              "X-WR-TIMEZONE:Europe/Istanbul",
+
+              (
+                  "X-WR-CALNAME:"
+                  "Türkiye Şehitleri"
+              ),
+
+              (
+                  "X-WR-TIMEZONE:"
+                  "Europe/Istanbul"
+              ),
+
           ]
 
-          calendar.extend(events)
+
+          calendar.extend(
+              events
+          )
+
 
           calendar.append(
               "END:VCALENDAR"
           )
+
 
           with open(
               OUTPUT,
@@ -212,9 +319,12 @@ jobs:
           ) as f:
 
               f.write(
-                  "\r\n".join(calendar)
+                  "\r\n".join(
+                      calendar
+                  )
                   + "\r\n"
               )
+
 
           print(
               "ICS etkinlik sayısı:",
@@ -225,16 +335,27 @@ jobs:
 
           PY
 
+
       - name: Degisiklikleri kaydet
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git config user.name \
+            "github-actions[bot]"
+
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add data/ turkiye_sehitleri.ics
 
           if git diff --cached --quiet; then
-            echo "Degisiklik yok."
+
+            echo "Yeni degisiklik yok."
+
           else
-            git commit -m "Tum kaynaklari birlestir ve takvimi guncelle"
+
+            git commit \
+              -m "Sehit verilerini guncelle"
+
             git push
+
           fi
