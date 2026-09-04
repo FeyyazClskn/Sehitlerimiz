@@ -2,8 +2,8 @@ name: Sehitlerimizi Guncelle
 
 on:
   workflow_dispatch:
+
   schedule:
-    # Her gece Türkiye saatiyle yaklaşık 03:00
     - cron: "0 0 * * *"
 
 permissions:
@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Repoyu indir
         uses: actions/checkout@v4
 
@@ -27,7 +28,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      - name: Tum kaynaklari cek ve birlestir
+      - name: Tum kaynaklari cek
         run: |
           python merge_sources.py
 
@@ -41,59 +42,152 @@ jobs:
           INPUT = "data/sehitlerimiz_takvim.csv"
           OUTPUT = "turkiye_sehitleri.ics"
 
-          def esc(s):
-              return (str(s or "")
-                      .replace("\\", "\\\\")
-                      .replace(";", "\\;")
-                      .replace(",", "\\,")
-                      .replace("\r", "")
-                      .replace("\n", "\\n"))
+          def esc(value):
+              return (
+                  str(value or "")
+                  .replace("\\", "\\\\")
+                  .replace(";", "\\;")
+                  .replace(",", "\\,")
+                  .replace("\r", "")
+                  .replace("\n", "\\n")
+              )
 
           events = []
 
-          with open(INPUT, encoding="utf-8-sig", newline="") as f:
-              for row in csv.DictReader(f):
-                  d = datetime.strptime(row["sehadet_tarihi"], "%Y-%m-%d").date()
-                  name = row["ad_soyad"].strip() or "İsmi belirtilmemiş"
-                  rank = row["rutbe"].strip()
-                  title = f"Şehit {(rank + ' ') if rank else ''}{name}".strip()
+          with open(
+              INPUT,
+              encoding="utf-8-sig",
+              newline=""
+          ) as f:
 
-                  desc = [
+              reader = csv.DictReader(f)
+
+              for row in reader:
+
+                  date_value = row.get(
+                      "sehadet_tarihi",
+                      ""
+                  ).strip()
+
+                  if not date_value:
+                      continue
+
+                  try:
+                      d = datetime.strptime(
+                          date_value,
+                          "%Y-%m-%d"
+                      ).date()
+                  except ValueError:
+                      continue
+
+                  name = (
+                      row.get(
+                          "ad_soyad",
+                          ""
+                      ).strip()
+                      or "İsmi belirtilmemiş"
+                  )
+
+                  rank = (
+                      row.get(
+                          "rutbe",
+                          ""
+                      ).strip()
+                  )
+
+                  if rank:
+                      title = (
+                          f"Şehit {rank} {name}"
+                      )
+                  else:
+                      title = (
+                          f"Şehit {name}"
+                      )
+
+                  description = [
                       f"Şehadet tarihi: {d.strftime('%d.%m.%Y')}",
                       f"Şehadet yılı: {d.year}",
                   ]
 
-                  for label, field in [
+                  fields = [
                       ("Kurum", "kurum"),
                       ("Baba adı", "baba_adi"),
                       ("Memleket", "memleket"),
                       ("Doğum yeri", "dogum_yeri"),
                       ("Doğum yılı", "dogum_yili"),
                       ("Dönem/Cephe", "donem_cephe"),
-                      ("Kaynak", "kaynaklar"),
-                  ]:
-                      if row.get(field):
-                          desc.append(f"{label}: {row[field]}")
+                      ("Kaynaklar", "kaynaklar"),
+                  ]
 
-                  uid_source = "|".join([
-                      row.get("id",""), name, rank, row["sehadet_tarihi"]
-                  ])
-                  uid = str(uuid.uuid5(uuid.NAMESPACE_URL, uid_source)) + "@sehitlerimiz"
+                  for label, field in fields:
 
-                  events += [
+                      value = (
+                          row.get(
+                              field,
+                              ""
+                          ).strip()
+                      )
+
+                      if value:
+                          description.append(
+                              f"{label}: {value}"
+                          )
+
+                  uid_source = (
+                      row.get("id", "")
+                      + "|"
+                      + name
+                      + "|"
+                      + date_value
+                  )
+
+                  uid = (
+                      str(
+                          uuid.uuid5(
+                              uuid.NAMESPACE_URL,
+                              uid_source
+                          )
+                      )
+                      + "@sehitlerimiz"
+                  )
+
+                  end = d + timedelta(
+                      days=1
+                  )
+
+                  events.extend([
                       "BEGIN:VEVENT",
                       f"UID:{uid}",
-                      f"DTSTAMP:{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}",
-                      f"DTSTART;VALUE=DATE:{d.strftime('%Y%m%d')}",
-                      f"DTEND;VALUE=DATE:{(d + timedelta(days=1)).strftime('%Y%m%d')}",
+                      (
+                          "DTSTAMP:"
+                          + datetime.utcnow()
+                          .strftime(
+                              "%Y%m%dT%H%M%SZ"
+                          )
+                      ),
+                      (
+                          "DTSTART;VALUE=DATE:"
+                          + d.strftime("%Y%m%d")
+                      ),
+                      (
+                          "DTEND;VALUE=DATE:"
+                          + end.strftime("%Y%m%d")
+                      ),
                       f"SUMMARY:{esc(title)}",
-                      f"DESCRIPTION:{esc(chr(10).join(desc))}",
+                      (
+                          "DESCRIPTION:"
+                          + esc(
+                              "\n".join(
+                                  description
+                              )
+                          )
+                      ),
                       "CATEGORIES:Türkiye Şehitleri",
                       "RRULE:FREQ=YEARLY",
                       "STATUS:CONFIRMED",
                       "TRANSP:TRANSPARENT",
                       "END:VEVENT",
-                  ]
+                  ])
 
           calendar = [
               "BEGIN:VCALENDAR",
@@ -104,13 +198,31 @@ jobs:
               "X-WR-CALNAME:Türkiye Şehitleri",
               "X-WR-TIMEZONE:Europe/Istanbul",
           ]
+
           calendar.extend(events)
-          calendar.append("END:VCALENDAR")
 
-          with open(OUTPUT, "w", encoding="utf-8") as f:
-              f.write("\r\n".join(calendar) + "\r\n")
+          calendar.append(
+              "END:VCALENDAR"
+          )
 
-          print("ICS etkinlik sayısı:", len([x for x in events if x == "BEGIN:VEVENT"]))
+          with open(
+              OUTPUT,
+              "w",
+              encoding="utf-8"
+          ) as f:
+
+              f.write(
+                  "\r\n".join(calendar)
+                  + "\r\n"
+              )
+
+          print(
+              "ICS etkinlik sayısı:",
+              events.count(
+                  "BEGIN:VEVENT"
+              )
+          )
+
           PY
 
       - name: Degisiklikleri kaydet
@@ -120,6 +232,9 @@ jobs:
 
           git add data/ turkiye_sehitleri.ics
 
-          git diff --cached --quiet || git commit -m "Tum kaynaklari birlestir ve takvimi guncelle"
-
-          git push
+          if git diff --cached --quiet; then
+            echo "Degisiklik yok."
+          else
+            git commit -m "Tum kaynaklari birlestir ve takvimi guncelle"
+            git push
+          fi
