@@ -1,0 +1,197 @@
+name: Takvimi Olustur
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "sehitler.csv"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repoyu indir
+        uses: actions/checkout@v4
+
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: ICS olustur
+        run: |
+          python - <<'PY'
+          import csv
+          import re
+          import uuid
+          from datetime import datetime, timedelta
+
+          INPUT = "sehitler.csv"
+          OUTPUT = "turkiye_sehitleri.ics"
+
+          def parse_date(value):
+              if not value:
+                  return None
+
+              value = value.strip()
+
+              formats = [
+                  "%d.%m.%Y",
+                  "%d/%m/%Y",
+                  "%Y-%m-%d",
+                  "%Y/%m/%d",
+              ]
+
+              for fmt in formats:
+                  try:
+                      return datetime.strptime(value, fmt)
+                  except ValueError:
+                      pass
+
+              m = re.search(r"(\d{1,2})[./-](\d{1,2})[./-](\d{4})", value)
+
+              if m:
+                  try:
+                      return datetime(
+                          int(m.group(3)),
+                          int(m.group(2)),
+                          int(m.group(1))
+                      )
+                  except ValueError:
+                      pass
+
+              return None
+
+          def escape(value):
+              return (
+                  str(value or "")
+                  .replace("\\", "\\\\")
+                  .replace(";", "\\;")
+                  .replace(",", "\\,")
+                  .replace("\n", "\\n")
+                  .replace("\r", "")
+              )
+
+          events = []
+
+          with open(INPUT, "r", encoding="utf-8-sig", newline="") as f:
+              reader = csv.DictReader(f)
+
+              for index, row in enumerate(reader):
+                  name = (row.get("ad") or "").strip()
+                  rank = (row.get("rutbe") or "").strip()
+                  father = (row.get("baba_adi") or "").strip()
+                  hometown = (row.get("memleket") or "").strip()
+                  birth_place = (row.get("dogum_yeri") or "").strip()
+                  birth_year = (row.get("dogum_yili") or "").strip()
+                  death_date_raw = (row.get("sehadet_tarihi") or "").strip()
+                  front = (row.get("donem_cephe") or "").strip()
+                  source = (row.get("kaynak") or "").strip()
+                  page = (row.get("sayfa") or "").strip()
+
+                  death = parse_date(death_date_raw)
+
+                  # Takvim için kesin gün gerekli.
+                  if death is None:
+                      continue
+
+                  title_parts = ["Şehit"]
+
+                  if rank:
+                      title_parts.append(rank)
+
+                  if name:
+                      title_parts.append(name)
+                  else:
+                      title_parts.append("İsmi Belirtilmemiş")
+
+                  summary = " ".join(title_parts)
+
+                  description = [
+                      f"Şehadet tarihi: {death.strftime('%d.%m.%Y')}"
+                  ]
+
+                  if father:
+                      description.append(f"Baba adı: {father}")
+
+                  if hometown:
+                      description.append(f"Memleket: {hometown}")
+
+                  if birth_place:
+                      description.append(f"Doğum yeri: {birth_place}")
+
+                  if birth_year:
+                      description.append(f"Doğum yılı: {birth_year}")
+
+                  if front:
+                      description.append(f"Dönem/Cephe: {front}")
+
+                  if source:
+                      description.append(f"Kaynak: {source}")
+
+                  if page:
+                      description.append(f"Kaynak sayfası: {page}")
+
+                  uid_source = (
+                      f"{name}|{rank}|{death.strftime('%Y-%m-%d')}|"
+                      f"{hometown}|{index}"
+                  )
+
+                  uid = (
+                      str(uuid.uuid5(uuid.NAMESPACE_URL, uid_source))
+                      + "@sehitlerimiz"
+                  )
+
+                  start = death.strftime("%Y%m%d")
+                  end = (death + timedelta(days=1)).strftime("%Y%m%d")
+
+                  events.append([
+                      "BEGIN:VEVENT",
+                      f"UID:{uid}",
+                      f"DTSTAMP:{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}",
+                      f"DTSTART;VALUE=DATE:{start}",
+                      f"DTEND;VALUE=DATE:{end}",
+                      f"SUMMARY:{escape(summary)}",
+                      f"DESCRIPTION:{escape(chr(10).join(description))}",
+                      "CATEGORIES:Türkiye Şehitleri",
+                      "RRULE:FREQ=YEARLY",
+                      "STATUS:CONFIRMED",
+                      "TRANSP:TRANSPARENT",
+                      "END:VEVENT"
+                  ])
+
+          calendar = [
+              "BEGIN:VCALENDAR",
+              "VERSION:2.0",
+              "PRODID:-//feyyazclskn//Sehitlerimiz//TR",
+              "CALSCALE:GREGORIAN",
+              "METHOD:PUBLISH",
+              "X-WR-CALNAME:Türkiye Şehitleri",
+              "X-WR-TIMEZONE:Europe/Istanbul",
+          ]
+
+          for event in events:
+              calendar.extend(event)
+
+          calendar.append("END:VCALENDAR")
+
+          with open(OUTPUT, "w", encoding="utf-8") as f:
+              f.write("\r\n".join(calendar) + "\r\n")
+
+          print(f"Toplam takvim etkinligi: {len(events)}")
+          PY
+
+      - name: ICS dosyasini kaydet
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add turkiye_sehitleri.ics
+
+          git diff --cached --quiet || git commit -m "Takvimi guncelle"
+
+          git push
