@@ -1605,6 +1605,7 @@ de2dbdf88c3fca5a7b50b790,Mehmet Pehlivan,,Öğretmen,Çanakkale,Çanakkale,1954,
 75c3e50a5ace16b881442c63,Atilla Aydoğdu,,Öğretmen,Malatya,"Malatya, Battalgazi",1967,1994-09-17,Terörle Mücadele,Millî Eğitim Bakanlığı — Şehit Öğretmenlerimiz,https://sehitlerimiz.org.tr/sehit/atilla-aydogdu-103890
 0a959d4b17239068726ffab8,Adnan Tunca,,Öğretmen,Kırıkkale,Kırıkkale,1957,1994-09-23,Terörle Mücadele,Millî Eğitim Bakanlığı — Şehit Öğretmenlerimiz,https://sehitlerimiz.org.tr/sehit/adnan-tunca-103891
 489762ec390a4f87891eb627,Mustafa Gümüş,,Öğretmen,Giresun,"Giresun, Yağlıdere",1970,1994-09-23,Terörle Mücadele,Millî Eğitim Bakanlığı — Şehit Öğretmenlerimiz,https://sehitlerimiz.org.tr/sehit/mustafa-gumus-103892
+398f5e6d588b9476e0817894,Engin Saraç,,Jandarma Er,Trabzon,"Trabzon, Akçaabat",,1994-09-28,Terörle Mücadele,Akçaabat Kaymakamlığı,https://sehitlerimiz.org.tr/sehit/engin-sarac-104044
 671176b0732730eb74e3dc7a,Sait Korkmaz,,Öğretmen,Muş,"Muş, Bulanık",1967,1994-09-29,Terörle Mücadele,Millî Eğitim Bakanlığı — Şehit Öğretmenlerimiz,https://sehitlerimiz.org.tr/sehit/sait-korkmaz-103893
 284f6e8c5d9b281a5370bc8b,Hayati Kapukaya,,Öğretmen,İstanbul,"İstanbul, Üsküdar",1968,1994-10-08,Terörle Mücadele,Millî Eğitim Bakanlığı — Şehit Öğretmenlerimiz,https://sehitlerimiz.org.tr/sehit/hayati-kapukaya-103894
 ba2897bf87711fda9fb1f7dd,Ali Bulut,,Öğretmen,Trabzon,"Trabzon, Of",1967,1994-10-11,Terörle Mücadele,Millî Eğitim Bakanlığı — Şehit Öğretmenlerimiz,https://sehitlerimiz.org.tr/sehit/ali-bulut-103895
@@ -1831,7 +1832,9 @@ b5693de54a5e1ddaffd3e6f7,Yasin Bahadır Yüce,,,,,,2016-07-15,,EGM Havacılık D
 234500b1b1531e27af113824,Önder Güzel,,2. Sınıf Emniyet Müdürü (Özel Harekât D.Bşk.Yrd.),Ankara,,,2016-07-15,15 Temmuz,Emniyet Genel Müdürlüğü; Aksaray Valiliği,https://sehitlerimiz.org.tr/sehit/onder-guzel-102815
 8b587fbca73ee4ece946e026,Ali Anar,,Mahalle Muhtarı,Ankara,Ankara Kazan,,2016-07-16,15 Temmuz,15temmuzkahramanlari.com,https://sehitlerimiz.org.tr/sehit/ali-anar-102858
 93108979a3897fa493c5559d,Ömer Halisdemir,,Astsubay Kıdemli Başçavuş,Niğde,Niğde Bor,,2016-07-16,15 Temmuz,Bor Kaymakamlığı; NTV,https://sehitlerimiz.org.tr/sehit/omer-halisdemir-102813
+03209623a0a3a8163afd4ec3,Mikail Yaşa,Nevzat,Piyade Er,Malatya,"Malatya, Yeşilyurt",,2016-07-27,Terörle Mücadele,Malatya Valiliği,https://sehitlerimiz.org.tr/sehit/mikail-yasa-104046
 7e6b681e7bbdf9dcb94c01ca,Nuh Kürşat Temizyürek,,Jandarma Uzman Çavuş,Kayseri,Kayseri Melikgazi,,2016-07-27,Terörle Mücadele Harekâtı (2016),Hürriyet; MEB,https://sehitlerimiz.org.tr/sehit/nuh-kursat-temizyurek-102762
+ca45d2e41ac8c583c65bd73c,Osman Yıldırım,Demirhan,Uzman Çavuş,Kırıkkale,"Kırıkkale, Yahşihan",,2016-07-27,Terörle Mücadele,Hürriyet,https://sehitlerimiz.org.tr/sehit/osman-yildirim-104045
 a774275a53bf7b98642ac29b,Abdülhamit Kaya,,Çevik Kuvvet Polis Memuru,Yalova,Yalova Çiftlikköy,,2016-08-26,Polis Şehidi,Yalova Üniversitesi; Cumhuriyet,https://sehitlerimiz.org.tr/sehit/abdulhamit-kaya-102943
 324ae1aa7c6ed3d4079994f0,Burhan Acar,,Jandarma Uzman Çavuş,Denizli,Denizli,,2016-11-28,Terörle Mücadele Harekâtı (2016),Hürriyet; Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/burhan-acar-102763
 52cf57c004f486505484b0cf,Kıvanç Kaşıkçı,,Piyade Astsubay Üstçavuş,Çanakkale,Çanakkale,,2016-11-29,Terörle Mücadele Harekâtı (2016),BBC Türkçe,https://sehitlerimiz.org.tr/sehit/kivanc-kasikci-102859
@@ -1907,13 +1910,43 @@ f673d9808a67dfea53e4bef1,Halil Karakoç,,Piyade Uzman Onbaşı,,,,2020-01-08,Ter
 e552bf194eec1c433896e7d3,Ali Emre Fırıncıoğulları,,Tankçı Teğmen,Hatay,Hatay Samandağ,,2020-02-20,Terörle Mücadele,Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/ali-emre-firinciogullari-102777
 f3f1c00395c60b4221bcecae,Mustafa Muhammed Ak,,Piyade Uzman Onbaşı,İzmir,İzmir Gaziemir,,2020-03-02,Terörle Mücadele,Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/mustafa-muhammed-ak-102778
 891f21f6cc57429fcfeb8c68,Ramazan Nayir,,Piyade Uzman Onbaşı,Sivas,Sivas,,2020-03-19,Terörle Mücadele,Anadolu Ajansı; Hürriyet,https://sehitlerimiz.org.tr/sehit/ramazan-nayir-102779
+e11b4ef5ebbce2ace79c8940,Halil Tuna Akgöz,Basri,Jandarma Astsubay Kademeli Kıdemli Başçavuş,Tekirdağ,Tekirdağ,,2020-07-09,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/halil-tuna-akgoz-104133
+0b2d9b839074d514cb19ff73,Mesut Yazar,Mehmet,Jandarma Uzman Jandarma III. Kademeli Çavuş,Manisa,Manisa,,2020-07-09,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mesut-yazar-104134
 9d2f112abd559651395a379d,Gökhun Mete Altunbaş,,,,,,2020-07-15,,EGM Havacılık Dairesi — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/gokhun-mete-altunbas-101275
 332093fb396f613d3d8d759d,Mustafa Keskin,,,,,,2020-07-15,,EGM Havacılık Dairesi — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/mustafa-keskin-101279
 4d8c18d97b019a1965f968e7,Samet Üstüner,,,,,,2020-07-15,,EGM Havacılık Dairesi — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/samet-ustuner-101278
 fdb0c934d271e2ef91eaf109,Semih Güzelay,,,,,,2020-07-15,,EGM Havacılık Dairesi — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/semih-guzelay-101277
 6cb3fbad331b29f4c8121bb6,İrfan Aydoğan,,,,,,2020-07-15,,EGM Havacılık Dairesi — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/irfan-aydogan-101276
+92771a0d6dcb8e20b0c65305,Alper Yaman,Sabri,Jandarma Uzman Jandarma V. Kademeli Çavuş,Adana,"Adana, Ceyhan",,2020-07-18,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/alper-yaman-104132
+252351de4a0968bd1599dd4f,Ali Konukcu,Hasan,Jandarma Uzman Çavuş,Konya,Konya,,2020-07-24,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/ali-konukcu-104131
+6cab2f14f68d79fea28cda16,Nihat Ceylan,Muhlis,Jandarma Astsubay Kıdemli Başçavuş,Ağrı,,,2020-08-08,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/nihat-ceylan-104039
+cf943e82e7b55c15dbd128ce,Kurtuluş Kaya,Baddal,Jandarma Astsubay II. Kademeli Kıdemli Başçavuş,Kırşehir,Kırşehir,,2020-08-10,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/kurtulus-kaya-104130
+8b236b6d22d31994ccea2a35,Erdem Çıtır,Mahmut,Jandarma Uzman Jandarma VII. Kademeli Çavuş,Ordu,"Ordu, Çamaş",,2020-08-23,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/erdem-citir-104128
+b85d6735ed702087886a617c,Onur Kıran,Müjdat,Jandarma Uzman Çavuş,Çanakkale,Çanakkale,,2020-08-23,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/onur-kiran-104129
+47e9891170e148f6bdb0bf0d,Burak Tok,Kadir,Jandarma Uzman Çavuş,Gümüşhane,Gümüşhane,,2020-08-24,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/burak-tok-104127
+1fd290e98f2e33ed0f13c392,Çetin Ak,Ahmet,Jandarma Uzman Çavuş,Ordu,Ordu,,2020-08-27,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/cetin-ak-104126
+3888033fcd56d5a4d49198be,Aykut Variyenli,Ali,Jandarma Uzman Çavuş,Adana,Adana,,2020-08-30,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/aykut-variyenli-104125
+7bd2cb3ccf7488d1e7a1d1d3,Sami Yılmaz,Hamit,Jandarma Uzman Çavuş,Osmaniye,Osmaniye,,2020-09-04,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/sami-yilmaz-104124
+f55727224c36ebf3f7e2abe2,Mahmut Top,Şevket,Jandarma Kıdemli Yüzbaşı,Samsun,Samsun,,2020-09-11,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mahmut-top-104121
+ca6b9519d3819031059e6624,Sezer Uçar,Hasan,Jandarma Uzman Çavuş,Hatay,Hatay,,2020-09-11,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/sezer-ucar-104122
+8c2c9d28c3ac0d978f9784fc,Yusuf Uyar,Sabri,Jandarma Uzman Çavuş,Afyonkarahisar,Afyonkarahisar,,2020-09-11,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/yusuf-uyar-104123
+e2cb8cca585b649ac731aa86,Sinan Aktay,Salih,Jandarma Astsubay Kıdemli Çavuş,Konya,Konya,,2020-09-13,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/sinan-aktay-104120
+5eabb4a4c2ba2335e4c36db8,Hüseyin Yırtıcı,Abdi,Jandarma Uzman Çavuş,Hatay,Hatay,,2020-10-04,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/huseyin-yirtici-104119
+d2c94c5beb258b04978d02fa,Orkun Eyice,İsmail,Jandarma Uzman Onbaşı,Ordu,"Ordu, Kumru",,2020-10-06,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/orkun-eyice-104118
+50b568e2efb188061f479130,Emre Dokumacı,Hüseyin,Jandarma Astsubay Kıdemli Çavuş,Çorum,Çorum,,2020-10-10,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/emre-dokumaci-104117
+7d7ff6c106aaad00f4d80c3c,Cumhur Tokuş,Derya,Jandarma Uzman Çavuş,Adana,Adana,,2020-11-18,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/cumhur-tokus-104116
+137ee1b814067b6b63c179c5,Metin Sarıkol,Abdulmecit,Jandarma Uzman Jandarma VIII. Kademeli Çavuş,Osmaniye,,,2020-12-10,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/metin-sarikol-104021
+e640d4f14f780b26615063c0,Oğuzhan Anar,Adem,Jandarma Uzman Çavuş,Çorum,Çorum,,2020-12-10,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/oguzhan-anar-104115
+18e97d66447b43057d2046be,Yasin Kurt,Ziya,Jandarma Yüzbaşı,Antalya,Antalya,,2020-12-10,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/yasin-kurt-104114
+d15cd7513320558bfd35f5c0,Sezgin Erbaş,Mehmet Ecevit,Jandarma Er,Hakkâri,,,2020-12-28,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/sezgin-erbas-104020
 6fc55e0a5a10f88d1607e64d,Selim Gedik,,Piyade Er,Sakarya,Sakarya,,2021-01-19,Terörle Mücadele,Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/selim-gedik-102782
+43b5caf565ced0befc034a90,Süleyman Demirel,Mehmet,Jandarma Astsubay Kademeli Kıdemli Başçavuş,Afyonkarahisar,Afyonkarahisar,,2021-02-04,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/suleyman-demirel-104113
 4647b7e84b8484e5021fd6ab,Semih Özbey,,Astsubay Başçavuş,Malatya,Malatya,01.06.1993,2021-02-11,Terörle Mücadele,terorsehitleri.com,https://sehitlerimiz.org.tr/sehit/semih-ozbey-102945
+df7e03963f8ad05a3f597b3a,Mevlüt Kahveci,Alişan,Jandarma Uzman Çavuş,Eskişehir,Eskişehir,,2021-02-13,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mevlut-kahveci-104110
+8dc85ce2f0472f4412606167,Sedat Sorgun,Nihat,Jandarma Er,Erzurum,Erzurum,,2021-02-13,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/sedat-sorgun-104111
+9418181f0b22c1bd2707d876,Süleyman Sungur,Mehmet Salih,Jandarma Er,Siirt,Siirt,,2021-02-13,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/suleyman-sungur-104112
+4abd2f9604c4aea97b02624f,Ümit Gıcır,Musa,Jandarma Uzman Jandarma III. Kademeli Çavuş,Balıkesir,Balıkesir,,2021-02-13,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/umit-gicir-104109
+dca7f88c2e4030e50681671b,Cihat Çevik,İbrahim,Jandarma Astsubay Çavuş,Karaman,Karaman,,2021-04-02,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/cihat-cevik-104108
 55ff2ae23968dece44c7a310,Gökhan Çakır,,Piyade Komando Uzman Onbaşı,Bursa,Bursa İnegöl,,2021-04-08,Terörle Mücadele,Bursa Valiliği,https://sehitlerimiz.org.tr/sehit/gokhan-cakir-102946
 10cadfcffc267c457bdd4fd6,Tevfik Yasin Keser,,Ulaştırma Eri,Mersin,Mersin,,2021-04-08,Diğer,Seydişehir Haber,https://sehitlerimiz.org.tr/sehit/tevfik-yasin-keser-103029
 93236c02299a465b0a58263e,Mehmet Kıvık,,Piyade Teğmen,İzmir,İzmir Menderes,19.06.1994,2021-04-26,Terörle Mücadele,sehitmehmetkivik.com,https://sehitlerimiz.org.tr/sehit/mehmet-kivik-102935
@@ -1922,6 +1955,9 @@ ab03e223af040725e00be5a1,Ali Er,,4. Sınıf Emniyet Müdürü,,,,2021-05-05,Poli
 215498e4f244f3465a128e2c,Hüseyin Karakuş,,Polis Memuru,,,,2021-05-05,Polis Şehidi,EGM Özel Harekat Başkanlığı,https://sehitlerimiz.org.tr/sehit/huseyin-karakus-103116
 f88660c3b7cf7064e5000d5d,İshak Çelik,,Polis Memuru,,,,2021-05-05,Polis Şehidi,EGM Özel Harekat Başkanlığı,https://sehitlerimiz.org.tr/sehit/ishak-celik-103115
 bc77bed1fbe5de32c0b81eef,Yılmaz Allahverdi,,Başkomiser,,,,2021-05-06,Polis Şehidi,EGM Özel Harekat Başkanlığı,https://sehitlerimiz.org.tr/sehit/yilmaz-allahverdi-103102
+04678d60e29a323ef8eaedb0,Hüseyin Keleş,Hasan,Jandarma Uzman Çavuş,Ankara,Ankara,,2021-05-29,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/huseyin-keles-104107
+68a5bf1363111ce84d3ecc0e,Baki Koçak,Şevket,Jandarma Teğmen,Yozgat,Yozgat,,2021-06-02,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/baki-kocak-104106
+324e479d24765bb15bdc17ba,Egemen Öztürk,Orhan,Jandarma Astsubay Kıdemli Çavuş,İzmir,İzmir,,2021-06-08,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/egemen-ozturk-104105
 8553bf79ac50b8aa8c055d9e,Kemal Yılmaz,,Polis Memuru,,,,2021-06-22,Polis Şehidi,EGM Özel Harekat Başkanlığı,https://sehitlerimiz.org.tr/sehit/kemal-yilmaz-103105
 a045a3b2975c6b98551d0d35,Mustafa Büyükpoyraz,,Polis Memuru,,,,2021-06-22,Polis Şehidi,EGM Özel Harekat Başkanlığı,https://sehitlerimiz.org.tr/sehit/mustafa-buyukpoyraz-103104
 99db05c5172e8b3e0a4288f1,Cebrail Aksöz,,Polis Memuru,,,,2021-06-23,Polis Şehidi,EGM Özel Harekat Başkanlığı,https://sehitlerimiz.org.tr/sehit/cebrail-aksoz-103106
@@ -1935,54 +1971,105 @@ f4af452bc1b72c3c38b53189,Yasin Boran,,Polis Memuru,,,,2021-06-25,Polis Şehidi,E
 a3f21faea631935b54bc066e,Recep Emre Yılmaz,,Polis Memuru,,,,2021-06-30,Polis Şehidi,EGM Özel Harekat Başkanlığı,https://sehitlerimiz.org.tr/sehit/recep-emre-yilmaz-103113
 9bd4a813ad843bd1fef1c3a3,Tufan Kansuva,,4. Sınıf Emniyet Müdürü,,,,2021-06-30,Polis Şehidi,EGM Özel Harekat Başkanlığı,https://sehitlerimiz.org.tr/sehit/tufan-kansuva-103114
 7999dd6381520df9b84283ef,Şükrü Can Kayadibi,,Komiser Yardımcısı,,,,2021-06-30,Polis Şehidi,EGM Özel Harekat Başkanlığı,https://sehitlerimiz.org.tr/sehit/sukru-can-kayadibi-103101
+7b3b4f98c3e045e057ea0bab,Mehmet Zahit Akkamış,Selami,Jandarma Uzman Çavuş,Tekirdağ,,,2021-07-03,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mehmet-zahit-akkamis-104010
+182b982c8571551a0eddf7c1,Murat Ekici,Gaffari,Jandarma Uzman Jandarma VII. Kademeli Çavuş,Adıyaman,Adıyaman,,2021-07-09,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/murat-ekici-104104
 a4ec72e761f01ed80ccfdffa,Muhammed Öztürk,,Piyade Er,Kastamonu,Kastamonu Taşköprü,,2021-08-15,Terörle Mücadele,Sözcü,https://sehitlerimiz.org.tr/sehit/muhammed-ozturk-102781
 3ea56e8b5cb99240d3169ff5,Mücahit Sınırtepe,,Piyade Uzman Çavuş,Kayseri,Kayseri,,2021-09-10,Terörle Mücadele,TRT Haber,https://sehitlerimiz.org.tr/sehit/mucahit-sinirtepe-102775
+32a10dc7600644093a1de387,Burak Tortumlu,Süleyman,Jandarma Uzman Çavuş,Erzurum,Erzurum,,2021-10-21,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/burak-tortumlu-104103
 2e0a165bb2501f6fae3ec978,Celil Mutlu,,Jandarma Astsubay Üstçavuş,Mersin,Mersin Erdemli,,2021-12-03,Terörle Mücadele,İçişleri Bakanlığı / Mersin Valiliği,https://sehitlerimiz.org.tr/sehit/celil-mutlu-103127
 77cc962e91eef110ecdb073f,Ali Sarı,,Piyade Uzman Çavuş,Balıkesir,Balıkesir Edremit,,2021-12-10,Terörle Mücadele,Aile ve Sosyal Hizmetler Bakanlığı Balıkesir,https://sehitlerimiz.org.tr/sehit/ali-sari-102776
+80163cd1473b31343f780fa8,Ayberk Soyutemiz,Yakup,Jandarma Uzman Çavuş,Kırşehir,Kırşehir,,2022-01-16,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/ayberk-soyutemiz-104102
+cbaf45baf7e9aa51814a3944,Mürsel Sunal,Memet,Jandarma Uzman Çavuş,Van,Van,,2022-02-28,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mursel-sunal-104101
+8b86586ac22e0449f7348506,İsmail Ergin,Abdullah,Jandarma Uzman Çavuş,Tokat,,,2022-03-04,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/ismail-ergin-104004
 16341f894cfdacdda35b1d31,Birol İli,,Polis Memuru,,,,2022-03-22,,EGM Özel Harekât — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/birol-ili-101227
 45f340ad7e72bc5318631fcf,Necati Aygün,,Polis Memuru,,,,2022-03-22,,EGM Özel Harekât — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/necati-aygun-101228
+edc6e8b6f6320be4d585cdb6,Burak Şahin,Hamdi,Jandarma Astsubay Çavuş,İstanbul,İstanbul,,2022-04-09,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/burak-sahin-104100
+6a4e2f56ac18b8a10c9aa2ad,Yusuf Avan,Adem,Jandarma Uzman Çavuş,Osmaniye,Osmaniye,,2022-04-09,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/yusuf-avan-104099
 6995bea715bddcf0dafab0b4,Aytaç Altunörs,,Polis Memuru,,,,2022-04-22,,EGM Özel Harekât — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/aytac-altunors-101226
 536c10be0fa232a046815f3f,Bekir Can Kerek,,Piyade Teğmen,Denizli,Denizli,,2022-04-22,Pençe-Kilit Harekâtı (2022),Millî Savunma Bakanlığı,https://sehitlerimiz.org.tr/sehit/bekir-can-kerek-102734
 37e5dbc0dd6ad3b55772b8f0,Doğukan Korkmaz,,Piyade Sözleşmeli Er,Zonguldak,"Zonguldak, Ereğli",,2022-04-26,Pençe-Kilit Harekâtı (2022),Karadeniz Ereğli Kaymakamlığı; Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/dogukan-korkmaz-103759
 e7593ae0688bc53e4e1d13b9,Fırat Canlı,,Veteriner Sözleşmeli Er,Kahramanmaraş,Kahramanmaraş,,2022-04-26,Pençe-Kilit Harekâtı (2022),Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/firat-canli-103760
 0960b92a4c742ff07b18e0c4,Yunus Kalkan,,Sözleşmeli Er,Hatay,"Hatay, Yayladağı",,2022-04-26,Pençe-Kilit Harekâtı (2022),Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/yunus-kalkan-103761
+0dc49d4bdde146bbb6bfc2b9,Fatih Berkay Akgün,Fikri,Jandarma Uzman Çavuş,Tekirdağ,Tekirdağ,,2022-04-30,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/fatih-berkay-akgun-104098
+f7a6dc1df1c85314d981e07e,İsmail Can Akdeniz,Hüseyin,Jandarma Teğmen,Adana,Adana,,2022-05-01,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/ismail-can-akdeniz-104097
+02d0c99f0bfd3a8e2674ea21,Muharrem Efendi Dündar,Mustafa,Jandarma Uzman Çavuş,Yozgat,Yozgat,,2022-05-07,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/muharrem-efendi-dundar-104096
 96f6b7020d71315931a410ac,Nuri Melih Bozkurt,,Piyade Üsteğmen,Çorum,Çorum,,2022-05-28,Pençe-Kilit Harekâtı (2022),MSB / Terör Şehit ve Gazileri,https://sehitlerimiz.org.tr/sehit/nuri-melih-bozkurt-103134
+0adf58db20be5cd848d64a20,Ercan Özcan,Abdullah,Jandarma Uzman Çavuş,Balıkesir,"Balıkesir, Altıeylül",,2022-05-31,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/ercan-ozcan-104095
+9f55a2f4d918d312fda098f3,Güngör Gençer,Ali,Jandarma Astsubay Üstçavuş,Niğde,Niğde,,2022-06-14,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/gungor-gencer-104094
+8eaa4eecc790060eda1a7b13,Oğuzhan Arduç,İbrahim,Jandarma Astsubay Kıdemli Çavuş,Eskişehir,Eskişehir,,2022-06-23,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/oguzhan-arduc-104092
+8f1a4ac91f7d3596ee1fcad2,Turgut İçen,İdris,Jandarma Uzman Çavuş,İzmir,"İzmir, Ödemiş",,2022-06-23,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/turgut-icen-104093
+cb4dee5d28b5fe655e4b311b,Mustafa Gümüş,Ahmet,Jandarma Astsubay Çavuş,Kars,,,2022-06-30,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mustafa-gumus-103994
+465e19deea628caa4a26f487,Halis Keskin,Kamil Mehmet,Piyade Teğmen,Bursa,"Bursa, Büyükorhan",,2022-07-02,Diğer,Sözcü; Millî Savunma Bakanlığı açıklaması,https://sehitlerimiz.org.tr/sehit/halis-keskin-104047
 76d731538da706505f169cbf,Nurettin Tokyürek,,Piyade Uzman Çavuş,Erzurum,Erzurum,,2022-07-07,Pençe-Kilit Harekâtı (2022),Erzurum Valiliği,https://sehitlerimiz.org.tr/sehit/nurettin-tokyurek-102938
 f16fe9e3efc739eccc6a01a1,Selahattin Taşkın,,Piyade Uzman Çavuş,,,,2022-07-17,Pençe-Kilit Harekâtı (2022),T.C. Millî Savunma Bakanlığı,https://sehitlerimiz.org.tr/sehit/selahattin-taskin-102953
 c389ee4014cc51f300a071a3,Ömer Faruk Civelek,,Piyade Teğmen,Sakarya,Sakarya Karasu,,2022-07-17,Pençe-Kilit Harekâtı (2022),T.C. Millî Savunma Bakanlığı,https://sehitlerimiz.org.tr/sehit/omer-faruk-civelek-102952
+60b210aaa677de4b3bbbdea4,Mustafa Bozkurt,Mehmet,Jandarma Uzman Jandarma VII. Kademeli Çavuş,Kayseri,Kayseri,,2022-07-18,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mustafa-bozkurt-104091
 f3690b9ba38f9ca1910e47bc,Ümit Kesti,,Piyade Uzman Çavuş,Ordu,Ordu Fatsa,,2022-09-05,Pençe-Kilit Harekâtı (2022),Haberler.com; Sabah,https://sehitlerimiz.org.tr/sehit/umit-kesti-102864
+91563ebf0d3488339d477358,Osman Özsoy,Battal,Jandarma Uzman Çavuş,Kayseri,Kayseri,,2022-09-25,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/osman-ozsoy-104090
+dccd71c8818b5c1044af204e,Hüseyin Cerit,Hamza,Jandarma Uzman Jandarma VII. Kademeli Çavuş,Kayseri,Kayseri,,2022-10-03,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/huseyin-cerit-104089
+c2eb5e9ef68605d3132a9d9c,Kürşat Sert,Şahap,Jandarma Uzman Çavuş,Kahramanmaraş,Kahramanmaraş,,2022-10-13,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/kursat-sert-104088
 c1310ae069aee4994c59f3c2,Mustafa Çalışgan,,Polis Memuru,,,,2022-10-24,,EGM Özel Harekât — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/mustafa-calisgan-101225
 3b2daf01acfeebf64923d68e,Arzu Özsoy,,Öğretmen,İstanbul,İstanbul,1984,2022-11-13,Terörle Mücadele Harekâtı (2022),Millî Eğitim Bakanlığı — Şehit Öğretmenlerimiz,https://sehitlerimiz.org.tr/sehit/arzu-ozsoy-103945
 0895ddea07bf849653bb5475,Duabey Onur Öztürkmen,,Piyade Teğmen,Gaziantep,Gaziantep Nizip,,2022-11-25,Pençe-Kilit Harekâtı (2022),Millî Savunma Üniversitesi; İstanbul Valiliği,https://sehitlerimiz.org.tr/sehit/duabey-onur-ozturkmen-102732
 4a8a5cc5bfb370db665e376d,Tunahan Yavuz,,Piyade Komando Üsteğmen,Bursa,Bursa,,2022-12-15,Pençe-Kilit Harekâtı (2022),Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/tunahan-yavuz-102733
+e3d210581ce9cd2c48ff7de2,Eren Öztürk,Mahmut,Jandarma Uzman Çavuş,Adana,Adana,,2023-01-17,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/eren-ozturk-104087
+b31589bf93d69f5a8edc609f,Yasin Eroğlu,Hasan,Jandarma Uzman Çavuş,Adana,Adana,,2023-01-17,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/yasin-eroglu-104086
+89444aa723e44be76b6796bd,İlhan Kesekler,Bedri,Jandarma Astsubay II. Kademeli Kıdemli Başçavuş,Antalya,Antalya,,2023-02-28,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/ilhan-kesekler-104085
+df67e7f5e511e6b3cd98545b,Oğuzhan Adalıoğlu,Bekir,Jandarma Pilot Kıdemli Albay,Eskişehir,Eskişehir,,2023-03-07,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/oguzhan-adalioglu-104084
+b3eaf0d29a42866987d6e80a,Tansu Çolak,Ahmet,Jandarma Astsubay Kıdemli Çavuş,Balıkesir,Balıkesir,,2023-04-07,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/tansu-colak-104083
+aab78c3df3839fbd0a9f1091,Mehmet Gündüz,Metin,Jandarma Astsubay Üstçavuş,Tokat,Tokat,,2023-04-28,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mehmet-gunduz-104082
+b1c259c7c500994835798e25,Oğuzhan Kabayel,Yaşar,Jandarma Uzman Onbaşı,Isparta,Isparta,,2023-05-07,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/oguzhan-kabayel-104081
+fcd785642f1ed3285787f3ce,Bayram Doğan,Necaattin,Jandarma Uzman Çavuş,Tokat,Tokat,,2023-05-16,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/bayram-dogan-104077
+8ffef109b2a99f683173e217,Gaffar Mayik,Hasan,Jandarma Uzman Çavuş,Şanlıurfa,"Şanlıurfa, Bozova",,2023-05-16,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/gaffar-mayik-104079
+2584d6e55a4dde81f1297e31,Serkan Ölmez,Mehmet,Jandarma Uzman Çavuş,Mersin,Mersin,,2023-05-16,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/serkan-olmez-104078
+64216e24f56d942565cfc128,Özcan İlhan,Nevzat,Jandarma Uzman Çavuş,İstanbul,İstanbul,,2023-05-16,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/ozcan-ilhan-104080
+7cc48015c2e7a9c500885609,Aydın Ceylan,Bekir,Jandarma Uzman Çavuş,Çanakkale,Çanakkale,,2023-06-07,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/aydin-ceylan-104076
+b2e2ab7f0cdd6ca593d8190b,Mustafa Tatlı,Mustafa,Jandarma Astsubay Kıdemli Çavuş,Kahramanmaraş,"Kahramanmaraş, Onikişubat",,2023-07-31,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mustafa-tatli-104075
+9b72e6fb58d219f8513d3b0d,Burak Can Güngör,Feyyaz,Jandarma Uzman Çavuş,Adana,Adana,,2023-08-16,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/burak-can-gungor-104074
 ac24c25711459770db99c19f,Yusuf Çağatay Sanalp,,Polis Memuru,,,,2023-08-18,,EGM Özel Harekât — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/yusuf-cagatay-sanalp-101224
+fd2930846cb1cbb0011994cb,Hasan Bozkurt,Remzi,Jandarma Astsubay Kademeli Kıdemli Başçavuş,Hatay,Hatay,,2023-09-20,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/hasan-bozkurt-104073
 6183e07f2fd8a961d4683abe,Ertuğrul Kırık,,Özel Harekât Polis Memuru,Erzurum,Erzurum Aşkale,,2023-10-05,Polis Şehidi,Erzurum Valiliği,https://sehitlerimiz.org.tr/sehit/ertugrul-kirik-102822
 3f0c457c621c60ee98a3d8c4,Hüseyin Şimşek,,Kıdemli Başpolis Memuru,,,,2023-10-05,,EGM Özel Harekât — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/huseyin-simsek-101223
 db8aa5d2e6e137d74e39d9d8,Eril Alperen Emir,,Piyade Teğmen,Ankara,Ankara,,2023-12-12,Pençe-Kilit Harekâtı (2023),NTV,https://sehitlerimiz.org.tr/sehit/eril-alperen-emir-102735
+807a493168c45a646e312c0a,Mustafa Fatih Yetişen,Kemal,Jandarma Uzman Çavuş,Adana,"Adana, Sarıçam",,2023-12-14,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mustafa-fatih-yetisen-104072
+95ca365f542e062e2f7d89e7,Musab Haciömer Elmas,Mehmet,Jandarma Uzman Çavuş,Malatya,Malatya,,2023-12-15,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/musab-haciomer-elmas-104071
 b4e3c9d842312eebfe80ffef,Ramazan Günay,,Piyade Teğmen,Afyonkarahisar,Afyonkarahisar Sinanpaşa,,2023-12-22,Pençe-Kilit Harekâtı (2023),Afyonkarahisar Valiliği; Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/ramazan-gunay-102736
 22748e24b5726a49cda0802a,Kemal Aslan,,Sözleşmeli Er (41. Komando Tugayı),Elazığ,Elazığ,,2023-12-23,Pençe-Kilit Harekâtı (2023),Habertürk; Terör Şehitleri,https://sehitlerimiz.org.tr/sehit/kemal-aslan-102737
 6b1fa53b4397a5e07f7b1592,Gökhan Delen,,Piyade Üsteğmen,Aksaray,Aksaray,,2024-01-12,Pençe-Kilit Harekâtı (2024),MSB / Aksaray Valiliği,https://sehitlerimiz.org.tr/sehit/gokhan-delen-103126
 659e119a4d5bcd3cf5323c6c,Cemil Gülen,,,,,,2024-02-03,,EGM Havacılık Dairesi — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/cemil-gulen-101280
 887539e8f026ed5e846a51bb,Levent Öztürk,,,,,,2024-02-03,,EGM Havacılık Dairesi — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/levent-ozturk-101281
+df423c51c09924d6ac0c85f8,Ahmet Tuğay,Ramazan,Jandarma Uzman Çavuş,Karaman,"Karaman, Ermenek",,2024-02-13,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/ahmet-tugay-104070
+f8177963476be90019ac6693,Nebi Çullu,Osman,Jandarma Astsubay II. Kademeli Kıdemli Başçavuş,Adana,Adana,,2024-04-03,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/nebi-cullu-104069
+f160e9861604b7973d7f8f72,Ensar Enes Ertaş,Tahir,Jandarma Uzman Çavuş,Hatay,"Hatay, Payas",,2024-04-30,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/ensar-enes-ertas-104068
 b5162d2a78d2489dd28b7887,Mustafa Şen,,Jandarma Astsubay Çavuş,Antalya,Antalya Manavgat,,2024-04-30,Diğer,Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/mustafa-sen-102785
+d28538907c85a4368f98c1fb,Mustafa Yaşar,Celal,Jandarma Astsubay Kademeli Kıdemli Başçavuş,Hatay,"Hatay, Hassa",,2024-05-02,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mustafa-yasar-104067
 c88e5dff99b59b89c0732bde,Cebrail Acar,,İstihkâm Uzman Çavuş,Konya,Konya Emirgazi,,2024-07-04,Pençe-Kilit Harekâtı (2024),Anadolu Ajansı; MSB,https://sehitlerimiz.org.tr/sehit/cebrail-acar-102738
+b193e0c0a8843d83af4ff018,Muhammet Kalaz,İbrahim,Jandarma Astsubay Kıdemli Çavuş,Karabük,Karabük,,2024-08-08,Terörle Mücadele,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/muhammet-kalaz-104066
+1091e7a72e52c0c74d6e3eee,Yavuz Güney,Mustafa,Jandarma Uzman Çavuş,Ordu,"Ordu, Ünye",,2024-09-04,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/yavuz-guney-104065
+4bdf9038305fddf711964595,Doğan Kızılateş,Tacettin,Jandarma Uzman Onbaşı,Tokat,Tokat,,2024-09-08,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/dogan-kizilates-104063
+031dcad187c000f1a2e8b0e0,Mehmet Aykanat,Ercan,Jandarma Uzman Çavuş,Osmaniye,"Osmaniye, Kadirli",,2024-09-08,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mehmet-aykanat-104064
+51700c77609266e05715b93d,Orhan Burak Büyükçaylı,Osman Sacit,Jandarma Uzman Çavuş,Isparta,Isparta,,2024-09-08,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/orhan-burak-buyukcayli-104062
+a8cecad169ccc9971c251768,Ömer Eroğlu,Ali,Jandarma Uzman Çavuş,Zonguldak,"Zonguldak, Ereğli",,2024-09-08,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/omer-eroglu-104061
+abacd0cc0822278d8e8260a4,Mehmet Fatih Çangır,Turgut,Jandarma Astsubay Çavuş,Sakarya,Sakarya,,2024-09-18,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mehmet-fatih-cangir-104060
+51ba4c8bd0310245ec542181,Ali Alişan,Mustafa,Jandarma Uzman Jandarma VIII. Kademeli Çavuş,Osmaniye,"Osmaniye, Kadirli",,2024-10-16,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/ali-alisan-104059
 2ebc61839d34b9fa4d12ecd2,Hasan Hüseyin Canbaz,,Teknisyen,Ankara,,,2024-10-23,Terörle Mücadele,TRT Haber,https://sehitlerimiz.org.tr/sehit/hasan-huseyin-canbaz-102808
 f6a2e9b57d411024dfc95abe,Yiğit Can Yiğit,,Polis Memuru,,,,2024-11-13,Polis Şehidi,Emniyet Genel Müdürlüğü,https://sehitlerimiz.org.tr/sehit/yigit-can-yigit-101469
 106960f93df83870ad6afe7f,Atakan Dut,,Teğmen,Isparta,,,2024-12-09,Diğer,Anadolu Ajansı; Hürriyet,https://sehitlerimiz.org.tr/sehit/atakan-dut-102726
 17c8c6f4eea8fd73e70a1caa,Ceyhun Kalyoncu,,Teğmen,Isparta,,,2024-12-09,Diğer,Anadolu Ajansı; Hürriyet,https://sehitlerimiz.org.tr/sehit/ceyhun-kalyoncu-102727
 1711982bca36d5219ba10630,Taha Nergiz,,Astsubay Çavuş (Kara Havacılık),Erzurum,Erzurum Palandöken,,2024-12-09,Diğer,Erzurum Valiliği; Anadolu Ajansı,https://sehitlerimiz.org.tr/sehit/taha-nergiz-102725
 076068d8ba05dd1e1b202e8a,Tunahan Dağlı,,Teğmen,Isparta,,,2024-12-09,Diğer,Anadolu Ajansı; Hürriyet,https://sehitlerimiz.org.tr/sehit/tunahan-dagli-102728
+e6e425345cd007da97be7d01,Nurettin Yaşar,İbrahim,Jandarma Uzman Çavuş,Adana,Adana,,2024-12-14,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/nurettin-yasar-104058
 7f4dba44590d2332300631a8,Şahin Çınar,,Jandarma Astsubay Kıdemli Başçavuş,Mardin,,,2025-03-06,Terörle Mücadele,Derik Kaymakamlığı,https://sehitlerimiz.org.tr/sehit/sahin-cinar-103028
-12a24ebdbfee30062f3ba80a,Emre Polat,,Jandarma Astsubay Kıdemli Çavuş,,,,2025-05-28,,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/emre-polat-102963
+4de5414157add91ee20d3420,Emre Polat,İsmail,Jandarma Astsubay Kıdemli Çavuş,Sivas,Sivas,,2025-05-28,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/emre-polat-104057
 9935c03c62667ddc5e4fa985,Ahmet Gültekin,,Piyade Sözleşmeli Er,,,,2025-07-08,Pençe-Kilit Harekâtı (2025),Eyüpsultan Kaymakamlığı,https://sehitlerimiz.org.tr/sehit/ahmet-gultekin-102729
 75045142e037375193cfe1af,Özkan Özkanlı,,Piyade Sözleşmeli Er,Aksaray,Aksaray Ortaköy,,2025-07-08,Pençe-Kilit Harekâtı (2025),TRT Haber,https://sehitlerimiz.org.tr/sehit/ozkan-ozkanli-102730
 33c316de91377ccd73467e79,Semih Erdoğan,,İkmal Er,Hatay,,,2025-07-25,Diğer,Millî Savunma Bakanlığı,https://sehitlerimiz.org.tr/sehit/semih-erdogan-102788
-549f57f2d05b4a9d53d8a94a,Mehmet Ali Yıldırım,,Jandarma Uzman Çavuş,,,,2025-07-28,,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mehmet-ali-yildirim-102962
-5aa401d65689e6c051348bce,Yücel Yeşil,,Jandarma Uzman Çavuş,,,,2025-09-13,,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/yucel-yesil-102961
-f7ee5f19359c58c2a557b3fe,Arif Özdemir,,Jandarma Uzman Çavuş,,,,2025-09-30,,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/arif-ozdemir-102959
-1a5359bb64342292eec26d9d,Kemal Özgür,,Jandarma Astsubay Çavuş,,,,2025-09-30,,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/kemal-ozgur-102960
-dd65e225be2734c9b401cd93,Hakkı Eryılmaz,,Jandarma Astsubay Kıdemli Çavuş,,,,2025-10-10,,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/hakki-eryilmaz-102958
-e6a78587eb9d689b3f16b7aa,Tacettin Gün,,Jandarma Astsubay Kıdemli Çavuş,,,,2025-10-10,,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/tacettin-gun-102957
+aa628aa3e6f6ce4ce2958fad,Mehmet Ali Yıldırım,Sadi,Jandarma Uzman Çavuş,Adana,Adana,,2025-07-28,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mehmet-ali-yildirim-104056
+3133cefd23ff70fcceb6656d,Yücel Yeşil,Ahmet,Jandarma Uzman Çavuş,Manisa,Manisa,,2025-09-13,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/yucel-yesil-104055
+0d12e50ca6a59a08ff8c97e2,Arif Özdemir,Erol,Jandarma Uzman Jandarma VI. Kademeli Çavuş,Kırıkkale,"Kırıkkale, Balışeyh",,2025-09-30,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/arif-ozdemir-104053
+19a65f0a5f20b64b532a6c1c,Kemal Özgür,Muzaffer,Jandarma Astsubay Çavuş,Osmaniye,Osmaniye,,2025-09-30,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/kemal-ozgur-104054
+abf367f85ba419431973a4b4,Hakkı Eryılmaz,Mehmet,Jandarma Astsubay Kıdemli Çavuş,Manisa,Manisa,,2025-10-10,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/hakki-eryilmaz-104052
+35bb0141fa2d42beb39f2cfc,Tacettin Gün,Ramazan,Jandarma Astsubay Kıdemli Çavuş,Bursa,Bursa,,2025-10-10,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/tacettin-gun-104051
 b89f3f73f67546894c56ae77,Ahmet Yasir Kuyucu,—,Kıdemli Çavuş,,Konya,—,2025-11-11,Diğer,Hürriyet,https://sehitlerimiz.org.tr/sehit/ahmet-yasir-kuyucu-101325
 a9981f03ff06fe62e79e9c1c,Akın Karakuş,,Başçavuş,Gümüşhane,Gümüşhane,,2025-11-11,Diğer,Hürriyet,https://sehitlerimiz.org.tr/sehit/akin-karakus-103039
 281117c44e0ca8dc46f0074a,Berkay Karaca,,Üstçavuş,Kırklareli,Kırklareli Lüleburgaz,,2025-11-11,Diğer,Hürriyet,https://sehitlerimiz.org.tr/sehit/berkay-karaca-103043
@@ -2012,7 +2099,7 @@ eb0aeab1a73839603e96b761,Ümit İnce,,Kıdemli Başçavuş,İzmir,İzmir,,2025-1
 5754075ece8e552e2ce260d3,Emrah Koç,,Polis Memuru,,,,2026-05-17,,Emniyet Genel Müdürlüğü — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/emrah-koc-101219
 c98244d1c58c6e3965f598f2,Erkan Tütüncüler,,Polis Memuru,,,,2026-05-17,,Emniyet Genel Müdürlüğü — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/erkan-tutunculer-101220
 311e0fd8d801f689a3948594,Aydın Üyenarık,,Polis Memuru,,,,2026-05-29,,Emniyet Genel Müdürlüğü — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/aydin-uyenarik-101218
-14c23aaae6278a742df3f8b5,Yusuf Ergün,,Jandarma Astsubay Üstçavuş,,,,2026-05-30,,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/yusuf-ergun-102956
+64c8f015399c5a71eb39f0e3,Yusuf Ergün,Abdullah,Jandarma Astsubay Kademeli Üstçavuş,Kırıkkale,Kırıkkale,,2026-05-30,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/yusuf-ergun-104050
 9c7f28aa46bea133cf9c8661,Tayfun Baş,,Polis Memuru,,,,2026-06-14,,Emniyet Genel Müdürlüğü — Şehitlerimiz,https://sehitlerimiz.org.tr/sehit/tayfun-bas-101217
-e1de1ec6961fe0dbfce3fe02,Samet Karabulut,,Jandarma Uzman Çavuş,,,,2026-06-23,,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/samet-karabulut-102955
-8e8217f5960325ad555df584,Mehmet Demirbaş,,Jandarma Uzman Çavuş,,,,2026-07-11,,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mehmet-demirbas-102954
+98a6943d06f80b808917638e,Samet Karabulut,Mehmet Zeki,Jandarma Uzman Çavuş,Adana,"Adana, Sarıçam",,2026-06-23,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/samet-karabulut-104049
+39a2f6ca92d45f58c078db59,Mehmet Demirbaş,Mustafa,Jandarma Uzman Jandarma VIII. Kademeli Çavuş,Samsun,"Samsun, Terme",,2026-07-11,Diğer,T.C. Jandarma Genel Komutanlığı Şehit Bilgi Sorgulama,https://sehitlerimiz.org.tr/sehit/mehmet-demirbas-104048
